@@ -1,0 +1,5 @@
+JSColorMesh is a simple package that contains the needed functions to plot a grid of values on a 2 dimensional HTML5 canvas element. It is fast, thanks to the power of JavaScript.
+
+It is completely written in JS, and can be used fairly trivially, simply by specifying the location of the canvas element.
+
+REQUIRES Jquery!!
