@@ -1,22 +1,22 @@
-function contour_mesh(element,x,y,vals,options)
+function contour_mesh(element_id,x,y,vals,options)
 {
 	/*
 		A method to create a simple html5 canvas meshed value contour
 		// assumes time on the x axis
         Inputs:
-            element = the value returned by getElementById('') of the canvas object
+            element = the id name of the canvas element
             x = the values keying the horizontal portion of the data
             y = the values keying the vertical portion of the data
             vals = a 2 dimensional array corresponding to the values to be plotted
             options = a standard object with specifications to be listed later.
 	*/
 	// now figure out how to plot!
-	var ctx=element.getContext("2d");
+	var ctx=document.getElementById(element_id).getContext("2d");
 	// get container width/height
 	var x_label_offset = 22; // pixels to offset
 	var y_label_offset = 35;
-	var w = $("#plot").width();
-	var h = $("#plot").height();
+	var w = $("#"+element_id).width();
+	var h = $("#"+element_id).height();
 	// now, clear the entire plot, for simplicity
 	ctx.clearRect(0,0,w,h);
 	
