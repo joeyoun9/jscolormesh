@@ -1,0 +1,10 @@
+UTILITIES
+
+The online UI Closure Compiler is used to compile this code. 
+Simply run the c shell script, and then copy the resulting file, all.js to the compuler at
+
+http://closure-compiler.appspot.com/home
+
+
+
+
