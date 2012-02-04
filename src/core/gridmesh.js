@@ -65,9 +65,11 @@ Fig.prototype.gridmesh = function(x,y,vals,options)
 	// now we have arrays for the size of each x unit!
 	width = (this.w/count); // the box width in pixels
 
+	/* MOVING THIS TO A LABELS CLASS!
 	///////////////// X LABELS, a total of 6!
 	// labels every width*count/4
-	for (i=0;i<=count;i=i+((count-1)/4))
+	numticks_x = 4
+	for (i=0;i<=count;i=i+((count-1)/numticks_x))
 	{
 		// at position i*width(x) 10(y) place the value x[i]
 		// FIXME - this is assuming that x is time - make label object
@@ -97,6 +99,7 @@ Fig.prototype.gridmesh = function(x,y,vals,options)
 		
 		
 	}
+	*/
 	// BORDERS
 	if (!options||options.border != 'none')
 	{
@@ -113,18 +116,18 @@ Fig.prototype.gridmesh = function(x,y,vals,options)
 		this.ctx.lineTo(this.y_label_offset-2,this.h+1);
 		this.ctx.stroke();
 	}
-
+	// define the colorbar ONCE!!!
+	A =       (options&&options.min)?options.min:Math.min.apply(Math, vals[0]);
+	B =       (options&&options.max)?options.max:Math.max.apply(Math, vals[0]);
+	levels =  (options&&options.levels)?options.levels:50;
+	cmap =    (options&&options.cmap)?options.cmap:'jet';
+	cbr = new colorbar(B,A,levels,cmap);// define a colorbar
 	height = (this.h/vals[0].length); // left over from the looping... I hope
 	curr_x = this.y_label_offset;
 	// and.. create the rectangles
 	for (ob_key in vals)
 	{
 		val = vals[ob_key];
-		A =       (options&&options.min)?options.min:Math.min.apply(Math, val);
-		B =       (options&&options.max)?options.max:Math.max.apply(Math, val);
-		levels =  (options&&options.levels)?options.levels:50;
-		cmap =    (options&&options.cmap)?options.cmap:'jet';
-		cbr = new colorbar(B,A,levels,cmap);// define a colorbar
 		// reset the y placeholder
 		curr_y = this.h;
 		
