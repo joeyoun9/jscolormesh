@@ -2,7 +2,7 @@ function run()
 {
 	// create a dataset, and plot it!
 
-	size = 300;
+	size = 100;
 	vals = [];
 	az = [];
 	for(i = 0;i<size;i=i+1)
@@ -12,18 +12,20 @@ function run()
 		holder = []; // holds the current 'column'
 		for (j=0;j<size;j=j+1)
 		{
-			r.pushtan;
+			i = i*1;
+			j = j*1;
+			r.push(j);
 			holder.push(Math.cos(j*2*Math.PI/size)*Math.cos(i*2*Math.PI/size));
 		}
 		vals.push(holder);
 	}
-	alert(vals[0]);
+	//NOTE IT IS GENERALLY ADVISED TO SPECIFY MIN AND MAX SCALES!!!
 	// plot this data in a radar plot
 	fig = new Fig('plot');
-	fig.radar(az,r,vals,{levels:100,cmap:'jet',max:1.1,min:-1.1});
+	fig.radar(az,r,vals,{levels:100,cmap:'jet'});
 
 	// then use the second plot and give a simple gridmesh of the same data
 	fig = new Fig('plot2');
-	fig.gridmesh(az,r,vals,{levels:100,cmap:'jet',max:1.1,min:-1.1});
+	fig.gridmesh(az,r,vals,{levels:100,cmap:'jet'});
 
 }
