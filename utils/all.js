@@ -1,9 +1,11 @@
 function colorbar_bw(levels)
 {
-	mx = 255;
-	mn = 0;
-	span = Math.round((mx-mn)/levels); // color change per level
-	r=g=b=[];
+	var mx = 255;
+	var mn = 0;
+	var span = Math.round((mx-mn)/levels); // color change per level
+	var r= [];
+	var g= [];
+	var b=[];
 	for (i=0;i<levels;i=i+1)
 	{
 		r.push(mn+span*i);
@@ -94,9 +96,9 @@ function colorbar_grey(levels)
 function colorbar_hsv()
 {
 	//FIXME - NOT HSV YET
-	r=[];
-	g=[];
-	b=[];
+	var r=[];
+	var g=[];
+	var b=[];
 	// broken into fifths - blk to blue
 	// blu - cyan=g255,b255
 	// transfer 255 blue to 255 red - full green	
@@ -105,8 +107,8 @@ function colorbar_hsv()
 	// red - black
 			
 	//1 divide both the length and the range by fifths
-	seg_length = Math.round(levels/5) - 1; //rounding can introduce small errors... oh well
-	cps = Math.round(255/seg_length); //color values per value gate for each span range
+	var seg_length = Math.round(levels/5) - 1; //rounding can introduce small errors... oh well
+	var cps = Math.round(255/seg_length); //color values per value gate for each span range
 	// 2. for each segment define #segs of colors covering the needed span
 	// total color span change is 255, so
 	r = [];
