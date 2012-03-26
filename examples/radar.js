@@ -1,8 +1,7 @@
 function run()
 {
 	// create a dataset, and plot it!
-
-	size = 100;
+	size = 360;
 	vals = [];
 	az = [];
 	for(i = 0;i<size;i=i+1)
@@ -10,17 +9,19 @@ function run()
 		az.push(i*2*Math.PI/size); // azimuth (radians)
 		r = []; // range
 		holder = []; // holds the current 'column'
-		for (j=0;j<size;j=j+1)
+		for (j=0;j<size/5;j=j+1)
 		{
 			i = i*1;
 			j = j*1;
 			r.push(j);
-			holder.push(Math.cos(j*2*Math.PI/size)*Math.cos(i*2*Math.PI/size));
+			holder.push(Math.sin(j*10*Math.PI/size)*Math.cos(i*2*Math.PI/size));
 		}
 		vals.push(holder);
 	}
 	//NOTE IT IS GENERALLY ADVISED TO SPECIFY MIN AND MAX SCALES!!!
 	// plot this data in a radar plot
+
+
 	fig = new Fig('plot');
 	fig.radar(az,r,vals,{levels:100,cmap:'jet'});
 
